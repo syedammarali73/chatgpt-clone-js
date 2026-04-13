@@ -1,12 +1,15 @@
 import express from "express";
 import cors from "cors";
 import { generate } from "./LLM.js";
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: process.env.ORIGIN,
   }),
 );
 app.use(express.json());
